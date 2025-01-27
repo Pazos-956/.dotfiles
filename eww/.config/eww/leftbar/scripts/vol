@@ -1,0 +1,25 @@
+#!/bin/bash
+
+cmd="$(pamixer --get-mute)"
+
+
+    if [ "$cmd" == false ]; then
+        col="#0f0f17"
+        bg="#bbc5d7"
+        icon="墳"
+
+    else
+        bg="#0f0f17"
+        col="#bbc5d7"
+        icon="ﱝ ‎" 
+    fi
+
+
+
+if [ $1 = "vol" ]; then
+    echo $icon
+elif [ $1 = "vol_col" ]; then
+    echo $col
+elif [ $1 = "vol_bg" ]; then
+    echo $bg
+fi

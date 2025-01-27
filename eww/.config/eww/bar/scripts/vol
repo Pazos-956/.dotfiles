@@ -1,0 +1,25 @@
+#!/bin/bash
+
+mute_status="$(amixer get Master | tail -n 1 | awk {'print($6)'} | cut -d '[' -f2 | cut -d ']' -f1)"
+
+
+    if [ "$mute_status" == "on" ]; then
+        col="#0f0f17"
+        bg="#bbc5d7"
+        icon="墳"
+
+    else
+        bg="#0f0f17"
+        col="#bbc5d7"
+        icon="ﱝ ‎" 
+    fi
+
+
+
+if [ $1 = "vol" ]; then
+    echo $icon
+elif [ $1 = "vol_col" ]; then
+    echo $col
+elif [ $1 = "vol_bg" ]; then
+    echo $bg
+fi

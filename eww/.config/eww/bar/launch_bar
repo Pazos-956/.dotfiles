@@ -1,0 +1,45 @@
+#!/bin/bash
+
+##              Para cambiar esto hay que copiar el archivo a /usr/bin
+
+## Files and cmd
+FILE="$HOME/.cache/eww_launch.xyz"
+EWW="/usr/local/bin/eww -c $HOME/.config/eww/bar"
+
+# windows not in use
+# separ
+
+## window list
+bar1="
+	barw1
+"
+bar2="
+	barw2
+"
+## Run eww daemon if not running already
+if [[ ! `pidof eww` ]]; then
+	${EWW} daemon
+	sleep 1
+fi
+
+# widgets not in use
+# apps
+# twitter
+# volume
+# fetch
+
+## Open widgets 
+run_eww() {
+    ${EWW} open $bar1 --screen 0
+    ${EWW} open $bar2 --screen 1
+}
+
+## Launch or close widgets accordingly
+if [[ ! -f "$FILE" ]]; then
+	touch "$FILE"
+	run_eww 
+else
+    ${EWW} close $bar1
+    ${EWW} close $bar2
+	rm "$FILE"
+fi

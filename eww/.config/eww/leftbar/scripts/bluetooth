@@ -1,0 +1,38 @@
+#!/bin/sh
+
+switch() {
+    power_info="$(bluetoothctl show | head -n 5 | tail -n 1 | cut -d " " -f 2)"
+    
+    if [[ $power_info == *"yes"* ]]; then
+        dunstify -a "Bluetooth" -u low -r "5498" "Bluetooth apagado" 
+        bluetoothctl power off
+    elif [[ $power_info == *"no"* ]]; then
+        bluetoothctl power on
+        dunstify -a "Bluetooth" -u low -r "5498" "Bluetooth encendido" 
+    fi
+}
+
+info="$(bluetoothctl show | head -n 5 | tail -n 1 | cut -d " " -f 2)"
+
+    if [[ $info == yes ]]; then
+        icon=""
+        col="#0f0f17"
+        bg="#bbc5d7"
+	else
+        icon=""
+        bg="#0f0f17"
+        col="#bbc5d7"
+    fi
+
+    
+
+
+if [ $1 = "--bluetooth" ]; then
+    switch
+elif [ $1 = "--bluetooth_ic" ]; then
+    echo $icon
+elif [ $1 = "blue_col" ]; then
+    echo $col
+elif [ $1 = "blue_bg" ]; then
+    echo $bg
+fi

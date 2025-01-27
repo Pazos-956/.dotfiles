@@ -1,0 +1,141 @@
+#
+# wm independent hotkeys
+#
+
+#
+# App Config
+#
+
+#Powermenu
+super + p
+	/home/abel/.config/rofi/scripts/powermenu_t1
+
+# App Menu
+super + m
+	/home/abel/.config/rofi/scripts/launcher_t3 
+#Wifi menu
+super + g
+	/home/abel/.config/networkmanager-dmenu/networkmanager_dmenu
+
+#browser
+super + b
+	firefox-developer-edition
+
+# file explorer
+super + e
+	pcmanfm
+
+# terminal file explorer
+super + shift + e
+	kitty -e ranger
+
+# terminal emulator
+super + Return
+	kitty
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+#Redshift
+super + r
+	redshift -O 3600
+super + shift + r
+	redshift -x
+
+#Screenshot
+super + s
+	flameshot screen -c -p ~/Pictures/Capturas/
+super + shift + s
+	flameshot gui -c -p ~/Pictures/Capturas/
+#
+#   Hardward keybindings
+#
+
+#Volume
+XF86AudioLowerVolume
+	/home/abel/.config/scripts/volume/changevolume down 
+XF86AudioRaiseVolume
+	/home/abel/.config/scripts/volume/changevolume up 
+XF86AudioMute
+	/home/abel/.config/scripts/volume/changevolume mute
+
+#Brightness
+XF86MonBrightnessUp
+	brightnessctl set +10%
+XF86MonBrightnessDown
+	brightnessctl set 10%-
+#Brightness in 60% keyboard
+super + Prior
+	brightnessctl set +10%
+super + Next
+	brightnessctl set 10%-
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + ctrl + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# focus the next/previous node in the current desktop
+super + shift + Tab
+    bspc node -f {next,prev}.local
+
+#
+# state/flags
+#
+
+# set the window state
+super + Tab
+  /home/abel/.config/sxhkd/scripts/WindowChange_bspwm
+super + f
+  bspc node -t floating
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + {_,shift + }{h,l}
+	bspc node -{f,s} {west,east}
+
+#super +{_,shift +} {j, k}
+super + {_,shift +}{j, k}
+    /home/abel/.config/sxhkd/scripts/focusMonocle.sh {f,s} {j,k}
+
+# focus or send to the given desktop
+super + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
+	bspc {desktop -f,node -d} '^{1,2,3,4,5,0,9,8,7,6}'
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+#
+# move/resize
+#
+
+# i3 like resizing masculine is the key above Tab "º"
+super + shift + ctrl + {h,j,k,l}
+  /home/abel/.config/sxhkd/scripts/resize_bspwm {west,south,north,east}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}

@@ -1,0 +1,122 @@
+#!/bin/bash
+
+## Get data
+priority="--player=spotify,vlc,discord,%any"
+ignore="--ignore-player=firefox"
+STATUS="$(playerctl $ignore $priority status)"
+
+## Get status
+get_status() {
+	if [[ $STATUS == *"Playing"* ]]; then
+		echo ""
+	else
+		echo "奈"
+	fi
+}
+
+## Get song
+get_song() {
+	title=`playerctl $ignore $priority metadata title`
+	if [[ -z "$title" ]]; then
+		echo ""
+	else
+		echo "$title"
+	fi	
+}
+
+## Get artist
+get_artist() {
+	artist=`playerctl $ignore $priority metadata artist`
+	if [[ -z "$artist" ]]; then
+		echo "artist"
+	else
+		echo "$artist"
+	fi	
+}
+
+## Get time
+get_time() {  #Tiempo Barra
+	time=`playerctl $ignore $priority position`
+	if [[ -z "$time" ]]; then
+		echo "0"
+	else
+		echo "$time"
+	fi	
+}
+get_ctime() {  #  Duracion de la cancion (comprobar)
+	ctime=`playerctl $ignore $priority metadata --format "{{ duration(mpris:length) }}"`
+	if [[ -z "$ctime" ]]; then
+		echo "0:00"
+	else
+		echo "$ctime"
+	fi	
+}
+get_ttime() {  #  Posicion actual  (Comprobar)
+	ttime=`playerctl $ignore $priority position --format "{{ duration(position) }}"`
+	if [[ -z "$ttime" ]]; then
+		echo "0:00"
+	else
+		echo "$ttime"
+	fi	
+}
+get_max(){  #Duracion de la cancion
+	MaxTime=`playerctl $ignore $priority metadata --format "{{ mpris:length/1000000 }}"` # de microsegundos a segundos
+	if [[ -z "$MaxTime" ]]; then
+		echo "0"
+	else
+
+		echo "$MaxTime"
+	fi	
+}
+
+loop_st() {
+    LOOP="$(playerctl $ignore $priority loop)"
+    if [[ $LOOP == *"Playlist"* ]]; then
+        icon="凌"
+    elif [[ $LOOP == *"Track"* ]]; then
+		icon="綾"
+	else
+        icon="稜"
+    fi
+    echo $icon
+}
+
+loop_change(){
+    LOOP="$(playerctl $ignore $priority loop)"
+    if [[ $LOOP == *"Playlist"* ]]; then
+        playerctl $priority loop Track
+    elif [[ $LOOP == *"Track"* ]]; then
+		playerctl $priority loop None
+	else
+        playerctl $priority loop Playlist
+    fi
+}
+
+## Execute accordingly
+if [[ "$1" == "--song" ]]; then
+	get_song
+elif [[ "$1" == "--artist" ]]; then
+	get_artist
+elif [[ "$1" == "--status" ]]; then
+	get_status
+elif [[ "$1" == "--time" ]]; then
+	get_time
+elif [[ "$1" == "--ctime" ]]; then
+	get_ctime
+elif [[ "$1" == "--ttime" ]]; then
+	get_ttime
+elif [[ "$1" == "--Max" ]]; then
+	get_max
+elif [[ "$1" == "--toggle" ]]; then
+	playerctl $priority play-pause
+elif [[ "$1" == "--next" ]]; then
+	{ playerctl $priority next;}
+elif [[ "$1" == "--prev" ]]; then
+	{ playerctl $priority previous;}
+elif [[ "$1" == "--loop_ic" ]]; then
+    loop_st
+elif [[ "$1" == "--loop_ch" ]]; then
+	loop_change
+elif [[ "$1" == "--volume" ]]; then
+	playerctl $priority metadata --format '{{ volume * 100 }}'
+fi

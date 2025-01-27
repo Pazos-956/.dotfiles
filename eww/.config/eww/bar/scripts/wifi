@@ -1,0 +1,29 @@
+    Status_daemon="$(systemctl status NetworkManager | grep 'inactive')"
+    Status_wifi="$(nmcli g | tail -n 1 | sed "s/  */ / g" | cut -d " " -f 4)"
+    General_status="$(nmcli g | tail -n 1 | sed "s/  */ / g" | cut -d " " -f 1)"
+    Status_eth="$(nmcli c | head -n 2 | tail -n 1 | sed "s/  */ /g" | cut -d " " -f 5)"
+    Name="$(nmcli d | head -n 2 | tail -n 1 | sed "s/  */ /g" | cut -d " " -f 4,5,6)" 
+    if [ $Status_daemon == "inactive" ]; then
+        icon=""
+        col="#9f54e4"
+    fi
+if [[ $General_status == "connected" ]]; then
+    if [[ $Status_eth == "ethernet" ]]; then
+        icon=""  #  Ethernet
+        col="#9f54e4"
+    else
+        icon="直" # connected
+        col="#9f54e4"
+    fi
+elif [[ $General_status == "disconnected" ]]; then
+    icon="睊" # disconnected
+    col="#9f54e4"
+fi
+
+if [ $1 = "wifi_icon" ]; then
+    echo $icon
+elif [ $1 = "wifi_col"  ]; then
+    echo $col
+elif [ $1 = "wifi_name" ]; then
+    echo $Name
+fi

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+                ## A veces "parpadean" los iconos porque marca como 0 cuando da error buscando los paquetes  ##
+## Get info 
+counter="$(checkupdates | wc -l)"
+    if [[ $counter >"0" ]]; then
+        icon=""
+        count="$(checkupdates | wc -l)"
+        
+    else ## cambiar icono
+        icon=""
+        count="0"
+    fi
+
+
+
+if [[ "$1" == "--number" ]]; then
+    echo $count
+elif [ $1 = "--icon" ]; then
+    echo $icon
+fi

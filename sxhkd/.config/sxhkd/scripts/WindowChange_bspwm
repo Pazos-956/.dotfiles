@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# La primera parte da un JSON con la info del Desktop, que se pasa a jq para buscar layout
+layout=$(bspc query -T -d | jq -r .layout)
+#layout=$(jq -r layout $layoutJSON)
+if [[ $layout == "monocle" ]]; then
+  bspc desktop -l tiled
+fi
+if [[ $layout == "tiled" ]]; then
+  bspc desktop -l monocle
+fi
+if bspc query -N -n focused.floating > /dev/null; then
+  bspc node -t tiled 
+  bspc desktop -l tiled
+fi

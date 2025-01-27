@@ -1,0 +1,493 @@
+/** EWW.SCSS
+Created by saimoom **/
+*{
+	all: unset;
+	font-family: feather;
+	font-family: FiraMono NF;
+}
+$color1: #ffffff;
+$color2: #ffffff;
+$color3: #ffffff;
+$color4: #ffffff;
+$color5: #ffffff;
+$color6: #ffffff;
+$color7: #ffffff;
+$color8: #ffffff;
+$color9: #ffffff;
+$color10: #ffffff;
+$color11: #ffffff;
+$color12: #ffffff;
+$color13: #ffffff;
+$color14: #ffffff;
+$color15: #ffffff;
+$color16: #ffffff;
+$color17: #ffffff;
+$color18: #ffffff;
+$color19: #ffffff;
+$color20: #ffffff;
+$color21: #ffffff;
+
+
+/** General **/
+.bar_class {
+    background-color: $color1;
+    border-radius: 16px;
+}
+.module {
+    margin: 0px 0px 0px 0px;
+    border-radius: 10px 16px 0px 10px;
+}
+
+/** tooltip!! **/
+tooltip.background {
+    background-color: $color1;
+    font-size: 18;
+    border-radius: 10px;
+    color: $color2;
+}
+
+tooltip label {
+    margin: 6px;
+}
+
+
+/** Widgets **/
+
+/*.profile_picture {
+ background-image: url('images/music.png');
+	background-size: 22px;
+	//background-position: 50% 35%;
+	min-height: 10px;
+	min-width: 10px;
+	margin: 10px 10px 10px 10px;
+	border-radius: 0px 0px 0px 0px;
+}*/
+
+.clock_time_sep {
+    font-size: 16;
+    color: $color3;
+    margin: 0px 4px 1px 4px;
+}
+.clock_time_class, .clock_minute_class {
+    font-size: 23;
+}
+.clock_date_class {
+    font-size: 18;
+    margin: 0px 20px 0px -1px;
+    color: $color4;
+}
+.clock_minute_class {
+    margin: 0px 20px 0px 3px;
+    color: $color3;
+}
+
+.clock_time_class {
+    color: $color3;
+    font-weight: bold;
+    margin: 0px 5px 0px 0px;
+}
+
+
+.membar {
+  color: $color5;
+    background-color: $color6;
+  border-radius: 10px;
+}
+.batbar {
+  color: $color7;
+    background-color: $color6;
+  border-radius: 10px;
+}
+.brightbar trough highlight {
+  background-image: linear-gradient(to right, $color20 30%, #f2cdcd 50%, $color5 100% *50);
+  border-radius: 10px;
+}
+.volbar trough highlight {
+  background-image: linear-gradient(to right, #afcee0 30%, $color17 50%, #77a5bf 100% *50);
+  border-radius: 10px;
+}
+.volume_icon {
+    font-size: 28;
+    color: $color8;
+  margin: 0px 10px 0px 10px;
+}
+
+
+.module_essid {
+    font-size: 18;
+    color: $color9;
+  margin: 0px 10px 0px 0px;
+}
+.module-wif {
+    font-size: 27;
+    color: $color9;
+    border-radius: 100%;
+  margin: 0px 10px 0px 5px;
+}
+
+.iconmem {
+    color: $color5;
+}
+.iconbat {
+    color: $color7;
+}
+.iconbat, .iconmem {
+    font-size: 15;
+    margin: 10px;
+}
+
+.updates_icon{
+  font-family: FiraCode NF;
+  font-size: 28;
+  padding-right: 5px;
+  color: $color10;
+}
+.updates {
+  font-weight : bold;
+	font-family: FiraCode NF;
+  padding-top:3px;
+  padding-right: 10px;
+  font-size: 16;
+  color: $color10;
+}
+
+
+.separ {
+    color: $color11;
+    font-weight: bold;
+    font-size: 22px;
+    margin: 0px 8px 0px 8px;
+  }
+
+.mem_module {
+    background-color: $color1;
+	border-radius: 16px;
+  margin: 0px 10px 0px 3px;
+  }
+.bat_module {
+    background-color: $color1;
+	border-radius: 16px;
+  margin: 0px 10px 0px 10px;
+  }
+
+
+scale trough {
+  all: unset;
+  background-color: $color12;
+  box-shadow: 0 2px 3px 2px $color13;
+  border-radius: 16px;
+  min-height: 10px;
+  min-width: 70px;
+  margin: 0px 10px 0px 0px;
+}
+
+.works {
+font-size: 27px;
+font-weight: normal;
+margin: 5px 0px 0px 20px;
+background-color: $color1;
+}
+
+ .U, .UA, .UB, .UC, .UD, .UE, .UF, .UG, .UH, .UI, .UAA, .UBB, .UCC, .UDD, .UEE, .UFF, .UGG, .UHH, .UII {
+  margin: 0px 10px 0px 0px;
+} 
+
+/* Unoccupied */
+.U {
+color: $color14;
+font-size:25;
+}
+
+/* Occupied */
+.UA, .UB, .UC, .UD, .UE, .UF, .UG, .UH, .UI{
+  color: $color15;
+  font-size:25;
+}
+
+/* Focused */
+.UAa, .UBb, .UCc, .UDd, .UEe, .UFf, .UGg, .UHh, .UIi, .Ua, .Ub, .Uc, .Ud, .Ue, .Uf, .Ug, .Uh, .Ui{
+  color: $color16;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  font-size:25;
+}
+
+
+.song_cover_art {
+	background-size: cover;	
+	background-position: center;
+	min-height: 24px;
+	min-width: 24px;
+	margin: 10px;
+	border-radius: 100px;
+}
+
+.song {
+	color: $color17;
+	font-size : 18px;
+	font-weight : bold;
+	margin : 3px 5px 0px 0px;
+}
+
+.song_btn_play {
+	color: $color17;
+	font-size : 28px;
+	margin : 3px 0px 0px 5px;
+
+}
+
+
+.song_btn_prev, .song_btn_next {
+	color: $color3;
+	font-size : 24px;
+	margin : 3px 0px 0px 5px;
+
+}
+// Calendar
+.cal {
+  background-color: $color18;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 18px;
+  font-weight: normal;
+
+.cal-in {
+    padding: 0px 10px 0px 10px;
+    color: $color3;
+
+.cal {
+     &.highlight {
+          padding: 20px;
+      }
+
+      padding: 5px 5px 5px 5px;
+      margin-left: 10px;
+    }
+  }
+}
+
+calender {
+    color: $color3;
+}
+calendar:selected {
+  color: $color16;
+}
+
+calendar.header {
+color: $color17;
+font-weight: bold;
+}
+
+calendar.button {
+color: $color7;
+}
+
+calendar.highlight {
+color: $color17;
+font-weight: bold;
+}
+
+calendar:indeterminate {
+color: $color3;
+}
+
+
+
+
+
+
+
+.sys_sep {
+    color: $color6;
+    font-size: 18;
+    margin: 0px 10px 0px 10px;
+}
+.sys_text_bat_sub, .sys_text_mem_sub {
+    font-size: 16;
+    color: $color19;
+    margin: 5px 0px 0px 25px;
+}
+.sys_text_bat, .sys_text_mem {
+    font-size: 21;
+    font-weight: bold;
+    margin: 14px 0px 0px 25px;
+}
+.sys_icon_bat, .sys_icon_mem {
+    font-size: 30;
+    margin: 30px;
+}
+.sys_win {
+    background-color: $color18;
+}
+.sys_bat {
+  color: $color7;
+    background-color: $color6;
+  border-radius: 10px;
+}
+.sys_mem {
+  color: $color20;
+    background-color: $color6;
+  border-radius: 10px;
+}
+.sys_icon_bat, .sys_text_bat {
+    color: $color7;
+}
+.sys_icon_mem, .sys_text_mem {
+    color: $color20;
+}
+.sys_bat_box {
+	border-radius: 16px;
+    margin: 15px 10px 10px 20px;
+  }
+.sys_mem_box {
+	border-radius: 16px;
+    margin: 10px 10px 15px 20px;
+  }
+
+
+
+
+
+
+
+.music_pop {
+    background-color: $color18;
+	border-radius: 16px;
+}
+/*   .music_cover_art {
+	background-size: cover;
+	background-position: center;
+	min-height: 100px;
+    box-shadow: 5px 5px 5px 5px $color13;
+	min-width: 170px;
+	margin: 20px;
+	border-radius: 20px;
+} */
+
+.music {
+	color: $color9;
+	font-size : 20px;
+	font-weight : bold;
+	margin : 20px 0px 0px -2px;
+}
+
+.music_artist {
+	color: $color19;
+	font-size : 16px;
+	font-weight : normal;
+	margin : 0px 0px 0px 0px;
+}
+
+.music_btn_prev, .music_btn_play, .music_btn_next {
+	font-family: Iosevka Nerd Font;
+}
+.music_btn_prev {
+	color: $color19;
+	font-size : 32px;
+	font-weight : normal;
+	margin: 0px 0px 0px 0px;
+}
+.music_btn_play {
+	color: $color17;
+	font-size : 48px;
+	font-weight : normal;
+	margin: 0px 0px 0px 0px;
+}
+.music_btn_next {
+	color: $color19;
+	font-size : 32px;
+	font-weight : normal;
+	margin: 0px 0px 0px 0px;
+}
+
+.music_bar scale trough highlight {
+	all: unset;
+    background-image: linear-gradient(to right, #afcee0 30%, $color17 50%, #77a5bf 100% *50);
+	border-radius: 24px;
+}
+.music_bar scale trough {
+	all: unset;
+	background-color: $color21;
+    box-shadow: 0 6px 5px 2px $color13;
+	border-radius: 24px;
+	min-height: 13px;
+	min-width: 190px;
+	margin : -10px 10px 20px 0px;
+}
+
+.audio-box {
+    background-color: $color18;
+	border-radius: 16px;
+}
+.speaker_icon {
+	background-size: cover;
+    background-image: url('images/speaker.png');
+	background-position: center;
+	min-height: 70px;
+	min-width: 75px;
+	margin: 10px 20px 5px 20px;
+	border-radius: 12px;
+}
+
+.speaker_text {
+	color: $color9;
+	font-size : 26px;
+	font-weight : bold;
+	margin: 20px 0px 0px 0px;
+}
+
+.speaker_bar scale trough highlight {
+	all: unset;
+    background-image: linear-gradient(to right, $color9 30%, #91b5cc 50%, #91b5cc 100% *50);
+	border-radius: 24px;
+}
+.speaker_bar scale trough {
+	all: unset;
+	background-color: $color21;
+    box-shadow: 0 6px 5px 2px $color13;
+	border-radius: 24px;
+	min-height: 13px;
+	min-width: 120px;
+	margin : 0px 0px 5px 0px;
+}
+
+
+
+
+.mic_icon {
+	background-size: cover;
+    background-image: url('images/mic.png');
+	background-position: center;
+	min-height: 70px;
+	min-width: 75px;
+	margin: 5px 20px 20px 20px;
+	border-radius: 12px;
+}
+
+.mic_text {
+	color: $color9;
+	font-size : 26px;
+	font-weight : bold;
+	margin: 0px 0px 0px 0px;
+}
+
+.mic_bar scale trough highlight {
+	all: unset;
+    background-image: linear-gradient(to right, $color9 30%, #91b5cc 50%, #91b5cc 100% *50);
+	border-radius: 24px;
+}
+.mic_bar scale trough {
+	all: unset;
+    box-shadow: 0 6px 5px 2px $color13;
+	background-color: $color21;
+	border-radius: 24px;
+	min-height: 13px;
+	min-width: 120px;
+	margin : 0px 0px 20px 0px;
+}
+
+.audio_sep {
+    color: $color6;
+    font-size: 18;
+	margin : 0px 0px 0px 0px;
+}
+

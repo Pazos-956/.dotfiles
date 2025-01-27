@@ -1,0 +1,36 @@
+#!/bin/bash
+
+    if [ "$(systemctl status NetworkManager | grep 'inactivo')" ]; then
+        icon=""
+        col="#d78787"
+        bg="#0f0f17"
+    fi
+    
+    if [ "$(nmcli g | tail -n 1 | sed "s/  */ /g" | cut -d " " -f 4)" == "desactivado" ]; then
+        icon="睊" # disconnected
+        col="#bfc9db"
+        bg="#0f0f17"
+    else
+        icon="直" # connected
+        col="#0f0f17"
+        bg="#bfc9db"
+    fi
+
+connect-disconnect(){
+   estado="$(nmcli g | tail -n 1 | sed "s/  */ /g" | cut -d " " -f 4)"
+    if [[ $estado == "activado" ]]; then
+        nmcli radio wifi off
+    else
+        nmcli radio wifi on
+    fi
+}
+
+if [ $1 = "wifi" ]; then
+    echo $icon
+elif [ $1 = "wifi_col"  ]; then
+    echo $col
+elif [ $1 = "wifi_bg" ]; then
+    echo $bg
+elif [ $1 = "wifi_connection" ]; then
+    connect-disconnect
+fi

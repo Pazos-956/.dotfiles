@@ -1,0 +1,347 @@
+(defvar IMAGE "images/profile.png")
+(defpoll username :interval "48h"  "whoami")
+
+(defpoll uptime :interval "50s" "uptime -p | sed -e 's/up //;s/ hours,/h/;s/ hour,/h/;s/ minutes/m/;s/ minute/m/'")
+
+(defpoll time_hour :interval "5m"
+       "date +\"%H\"")
+(defpoll time_year :interval "5m"
+       "date +\"%Y\"")
+(defpoll time_min :interval "5s"
+       "date +\"%M\"")
+(defpoll time_mer :interval "12h"
+        "date +\"%p\"")
+(defpoll time_day :interval "30m"
+       "date +\"%d\"")
+(defpoll time_month :interval "48h"
+      "date +\%m")
+(defpoll time_day_name :interval "30m"
+       "date +\"%A\"")
+(defpoll time_month_name :interval "48h"
+      "date +\%B")
+
+                                                  ;; Intervalos Y comandos
+;                 Musica
+(defpoll song_title :interval "1s"  "scripts/music_info --song")
+(defpoll song_artist :interval "1s"  "scripts/music_info --artist")
+(defpoll song_status :interval "1s"  "scripts/music_info --status")
+(defpoll loop_status :interval "1s"  "scripts/music_info --loop_ic")
+(defpoll song_time :interval "1s"  "scripts/music_info --time")
+(defpoll maxTime :interval "10s" "scripts/music_info --Max")
+
+;                 Circulos info
+(defpoll battery :interval "15s" "./scripts/battery --bat")
+(defpoll memory :interval "15s" "scripts/memory")
+(defpoll cpu :interval "17s" "scripts/cpu")
+
+;                 Boton wifi
+(defpoll wifi_icon :interval "5s" "./scripts/wifi wifi")
+(defpoll wifi_col :interval "5s" "scripts/wifi wifi_col")
+(defpoll wifi_bg :interval "5s" "scripts/wifi wifi_bg")
+;(defpoll wifi_connect :interval "5s" "scripts/wifi wifi_connection")
+
+;               boton notif
+(defpoll notif_icon :interval "5s" "./scripts/notifs notifs")
+(defpoll notif_col :interval "5s" "scripts/notifs notifs_col")
+(defpoll notif_bg :interval "5s" "scripts/notifs notifs_bg")
+
+;               boton volumen
+(defpoll vol_icon :interval "5s" "./scripts/vol vol")
+(defpoll vol_col :interval "5s" "scripts/vol vol_col")
+(defpoll vol_bg :interval "5s" "scripts/vol vol_bg")
+
+;               boton bluetooth
+(defpoll bluetooth :interval "5s" "scripts/bluetooth --bluetooth")
+(defpoll blue_ic :interval "5s" "scripts/bluetooth --bluetooth_ic")
+(defpoll blue_col :interval "5s" "scripts/bluetooth blue_col")
+(defpoll blue_bg :interval "5s" "scripts/bluetooth blue_bg")
+
+;                 Info barras
+(defpoll volume_percent :interval "2s" "scripts/music_info --volume")
+(defpoll mic_percent :interval "6s" "pamixer -D pulse sget Capture | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll brightness :interval "6s" "brightnessctl -m intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
+
+
+(defwidget profile []
+  (box :orientation "v" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
+				(box :class "profile_picture" :halign "center" :style "background-image: url('${IMAGE});")))
+				;; (label :class "profile_greeting" :halign "center" :wrap "true" :limit-width 25 :text username)))
+
+(defwidget time [] 
+		(box  
+             :orientation "v" 
+             :space-evenly "false" 
+             :vexpand "false" 
+             :hexpand "false" 
+             :spacing 0
+		(box  
+             :orientation "h" 
+             :space-evenly "false" 
+             :vexpand "false" 
+             :halign "center"
+             :hexpand "false" 
+             :spacing 0
+             
+			 (label :class "hour_class" 
+                    :valign "start" 
+                    :halign "start"
+                    :wrap "true" 
+                    :limit-width 25 
+                    :text time_hour)
+       (label :class "hour_class"
+                    :valign "end" 
+                    :halign "end"
+                    :text ":")
+			 (label :class "hour_class" 
+                    :valign "start" 
+                    :halign "start" 
+                    :wrap "true" 
+                    :limit-width 25 
+                    :text time_min)
+
+			 (label :class "mer_class" 
+                    :valign "start" 
+                    :halign "start" 
+                    :wrap "true" 
+                    :text time_mer))
+            (box :orientation "h" 
+              :spacing 0 
+              :space-evenly "false" 
+              :halign "center"
+              :vexpand "false" :hexpand "false" 
+			  (label :class "day_class" 
+                     :valign "start" 
+                     :text time_day)
+			  (label :class "day_class"
+                     :valign "fill" 
+                     :text "/")
+			  (label :class "day_class" 
+                     :valign "start" 
+                     :text time_month)
+        (label :class "day_class"
+                     :valign "fill" 
+                     :text "/")
+			  (label :class "month_class" 
+                     :valign "start" 
+                     :text time_year))
+            (box :orientation "h" 
+              :spacing 0 
+              :space-evenly "false" 
+              :halign "center"
+              :vexpand "false" :hexpand "false" 
+			  (label :class "day_class_n" 
+                     :valign "start" 
+                     :text time_day_name)
+			  (label :class "month_class_n"
+                     :valign "start" 
+                     :text ", ")
+			  (label :class "month_class_n" 
+                     :valign "start" 
+                     :text time_month_name))))
+
+(defwidget music []
+		(box :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false"
+			(box :orientation "v" :spacing 5 :space-evenly "false" :vexpand "false" :hexpand "false" :class "msc_bg"
+				(label :halign "start" :class "song" :wrap "false" :limit-width 15 :text song_title)
+				(label :halign "start" :class "song_artist" :wrap "true" :limit-width 15 :text song_artist))))
+
+(defwidget music_ctl []
+				(box :orientation "v" :spacing 10
+ :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false" :class "msc_ctl_bg"
+					(button :class "song_btn_prev" :onclick "~/.config/eww/leftbar/scripts/music_info --prev" "")
+					(button :class "song_btn_play" :onclick "~/.config/eww/leftbar/scripts/music_info --toggle" song_status)
+					(button :class "song_btn_next" :onclick "~/.config/eww/leftbar/scripts/music_info --next" "")
+					(button :class "song_btn_loop" :onclick "~/.config/eww/leftbar/scripts/music_info --loop_ch" loop_status)))
+
+
+(defwidget music_prog []
+			(box :orientation "v" :spacing 5 :space-evenly "false" :vexpand "false" :hexpand "false" :class "song_prog"
+				(scale :orientaion "v" :value song_time :min 0 :max maxTime :halign "start" :class "song_prog")))
+
+
+(defwidget main []
+  (box :class "bg" :orientation "h" :space-evenly "false"))
+
+
+(defwidget sep []
+  (box :class "sep" :orientation "h" :space-evenly "false"))
+
+
+(defwidget system []
+  (box :class "sys_win" :orientation "h" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 13 
+      (box :class "sys_bat_box" :orientation "v" :space-evenly "false" :hexpand "false" :vexpand "false"
+      (circular-progress :value battery
+                :class "sys_bat"
+                :thickness 100
+            (label :text " "
+                :class "cc_cc"
+                :limit-width 2
+                :show_truncated false
+                :wrap false))
+            (label :text "BAT"
+                :class "sys_icon_bat"
+                :limit-width 4
+                :show_truncated false
+                :wrap false))
+      (box :class "sys_cpu_box" :orientation "v" :space-evenly "false" :hexpand "false" :vexpand "false"
+      (circular-progress :value cpu
+                :class "sys_cpu"
+                :thickness 100
+            (label :text " "
+                :class "cc_cc"
+                :limit-width 2
+                :show_truncated false
+                :wrap false))
+            (label :text "CPU"
+                :class "sys_icon_cpu"
+                :limit-width 4
+                :show_truncated false
+                :wrap false))
+      (box :class "sys_mem_box" :orientation "v" :space-evenly "false" :hexpand "false" :vexpand "false"
+      (circular-progress :value memory
+                :class "sys_mem"
+                :thickness 100
+            (label :text " "
+                :class "cc_cc"
+                :limit-width 2
+                :show_truncated false
+                :wrap false
+                :angle 0.0))
+            (label :text "DISK"
+                :class "sys_icon_mem"
+                :limit-width 4
+                :show_truncated false
+                :wrap false))))
+
+
+		(defwidget audio []
+			(box :vexpand "false" :hexpand "false"
+				(box :orientation "h" :spacing 25 :halign "center" :valign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
+					(box :class "volume_bar" :orientation "v" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+                            (scale :flipped "true" :orientation "v" :min 0 :max 101 :value volume_percent :onchange "" )
+                            (label  :text "" :class "vol_icon"))
+					(box :class "mic_bar" :orientation "v" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+                            (scale :flipped "true" :orientation "v" :min 0 :max 101 :value mic_percent :active "false")
+                            (label  :text "" :class "mic_icon")))))
+
+
+
+(defwidget systray []
+  (box :class "sus_tray" :valign "center"  :space-evenly "false" :orientation "h"
+    (box :orientation "v" :hexpand "false" :vexpand "false" :space-evenly "false"
+      (button :class "wifi_but" :onclick "~/.config/eww/leftbar/scripts/wifi wifi_connection" :style "color: ${wifi_col}; background-color: ${wifi_bg}; font-size: 35"  wifi_icon)
+      (button :class "notif_but" :onclick "dunstctl set-paused toggle" :style "color: ${notif_col}; background-color: ${notif_bg}; font-size: 35"  notif_icon))
+    (box :orientation "v" :hexpand "false" :vexpand "false" :space-evenly "false"
+      (button :class "vol_but" :onclick "bash changevolume mute" :style "color: ${vol_col}; background-color: ${vol_bg}; font-size: 35" vol_icon)
+      (button :class "vol_but" :onclick "~/.config/eww/leftbar/scripts/bluetooth --bluetooth" :style "color: ${blue_col}; background-color: ${blue_bg}; font-size: 35" blue_ic))))
+
+ (defwidget powermenu []
+   (box :class "pow_tray" :valign "center"  :space-evenly "false" :orientation "h"
+    (box :orientation "v" :hexpand "false" :vexpand "false" :space-evenly "false"
+      (button :class "log_but" :onclick "poweroff" "")
+      (button :class "log_but" :onclick "systemctl suspend" ""))
+    (box :orientation "v" :hexpand "false" :vexpand "false" :space-evenly "false"
+      (button :class "log_but" :onclick "systemctl reboot" "")
+      (button :class "log_but" :onclick "qtile cmd-obj -o cmd -f shutdown" ""))))
+
+(defwidget stats []
+  (box :orientation "h" :space-evenly "false" 
+    (label :class "br_icon" :text "")
+	  (box :class "bright" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+          (scale :orientation "h" :min 0 :max 100 :value brightness :onchange "brightnessctl set {}%" ))))
+
+ (defwindow main
+   :geometry (geometry :anchor "left center"
+              :width "560px"
+              :height "90%"
+              :x "6px"
+              :y "20px")
+   (main))  ;;  Bloque central ( el de fondo )
+
+(defwindow pfp
+  :geometry (geometry :anchor "left top"
+             :width "190px"
+             :height "23px"
+             :x "20px"
+             :y "90px")
+  (profile))  ;;  Foto Del perfil
+
+(defwindow time
+  :geometry (geometry :anchor "left top"
+             :width "260px"
+             :height "100px"
+             :x "300px"
+             :y "100px")
+  (time))   ;;   Fecha y Hora
+
+(defwindow song :stacking "fg" :focusable "false" :screen 1
+  :geometry (geometry 
+             :width "260px"
+             :height "140px"
+             :x "20px"
+             :y "380px")
+  (music))   ;;  Info de la musica
+
+(defwindow song_ctl :stacking "fg" :focusable "false" :screen 1
+  :geometry (geometry 
+             :width "70px"
+             :height "187px"
+             :x "300px"
+             :y "370px")
+  (music_ctl))  ;;  Botones de la musica
+
+(defwindow song_prog :stacking "bg" :focusable "false" :screen 1 
+  :geometry (geometry 
+             :width "250px"
+             :height "10px"
+             :x "5px"
+             :y "530px")
+  (music_prog))   ;;   Tiempo de la musica
+
+(defwindow separ :stacking "fg" :focusable "false" :screen 1
+  :geometry (geometry 
+             :width "420px"
+             :height "2px"
+             :x "250px"
+             :y "6200px")
+  (powermenu))  ;;  Ni idea
+
+(defwindow sys_usg :stacking "fg"
+  :geometry (geometry
+             :width "420px"
+             :height "160px"
+             :x "60px"
+             :y "590px")
+  (system))  ;;  Indicadores de porcentaje
+
+(defwindow audio
+  :geometry (geometry
+             :width "0px"
+             :height "160px"
+             :x "410px"
+             :y "370px")
+  (audio))  ;;  Volumen Y micro
+
+(defwindow sys_tray
+  :geometry (geometry
+             :width "100px"
+             :height "120px"
+             :x "75px"
+             :y "810px")
+  (systray))  ;;  Botones wifi, etc
+
+(defwindow power_tray
+  :geometry (geometry
+              :width "100px"
+              :height "120px"
+              :x "300px"
+              :y "820px")
+  (powermenu)) ;; Botones menu
+
+(defwindow quote
+  :geometry (geometry
+             :width "295px"
+             :height "10px"
+             :x "10px"
+             :y "760px")
+  (stats))   ;;   Brillo
