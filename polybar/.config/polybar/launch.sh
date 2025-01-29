@@ -53,5 +53,6 @@ if [[ ! -f "$RFILE" ]]; then
 	set_values
 	touch "$RFILE"
 fi
-
+get_values
+set_values
 launch_bar

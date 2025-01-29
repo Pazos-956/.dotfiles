@@ -221,12 +221,13 @@ label-private = " | Private"
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "  "
+format = <label>
+format-prefix = ""
 format-prefix-font = 5
 format-prefix-foreground = ${color.blue}
 format-foreground = ${color.font}
 format-background = ${color.black}
-label = "%{A1:terminal -e htop &:}%percentage%% %{A}"
+label = "%{A1:terminal -e htop &:} %percentage%% %{A}"
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -303,7 +304,7 @@ type = internal/memory
 interval = 1
 
 format = <label>
-format-prefix = " "
+format-prefix = ""
 format-prefix-font = 5
 format-prefix-foreground = ${color.blue}
 format-foreground = ${color.font}

@@ -6,13 +6,6 @@ flameshot firefox-developer-edition pcmanfm udiskie feh"
 
 yay -S $apps
 
-stow_folders="bspwm kitty networkmanager-dmenu
-nvim picom polybar rofi scripts session sxhkd zsh" #eww
-
-for folder in $(echo $stow_folders)
-do
-    stow -D $folder
-    stow $folder
-done
+bash ./stow.sh
 
 feh --bg-fill $HOME/Pictures/fondos/piano_astronaut.png &
