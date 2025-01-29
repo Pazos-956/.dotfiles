@@ -1,0 +1,18 @@
+#!/bin/bash
+
+title=`playerctl --player=spotify,%any metadata title`
+if [[ $title == "No players found" ]]; then
+    title="   "
+fi
+
+
+if [[ ${#title} -gt 35 ]]; then
+    title=${title::35}"..."
+fi
+
+if [[ $(playerctl status) == 'Playing' ]];
+  then
+    echo '  '$title
+  else
+    echo '  '$title
+fi

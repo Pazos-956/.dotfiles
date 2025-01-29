@@ -25,7 +25,7 @@ content-foreground = ${color.altblack}
 type = custom/text
 content = "%{T3}%{T-}"
 content-background = ${color.black}
-content-foreground = ${color.red}
+content-foreground = ${color.blue}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -34,14 +34,14 @@ type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
 content-background = ${color.background}
-content-foreground = ${color.red}
+content-foreground = ${color.blue}
 
 [module/RRD]
 type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
 content-background = ${color.background}
-content-foreground = ${color.red}
+content-foreground = ${color.blue}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -84,14 +84,14 @@ type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
 content-background = ${color.background}
-content-foreground = ${color.magenta}
+content-foreground = ${color.blue}
 
 [module/MRD]
 type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
 content-background = ${color.background}
-content-foreground = ${color.magenta}
+content-foreground = ${color.blue}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -101,7 +101,7 @@ type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
 content-background = ${color.background}
-content-foreground = ${color.red}
+content-foreground = ${color.blue}
 
 [module/YRD]
 type = custom/text
@@ -134,14 +134,14 @@ type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
 content-background = ${color.black}
-content-foreground = ${color.red}
+content-foreground = ${color.blue}
 
 [module/BRD]
 type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
 content-background = ${color.background}
-content-foreground = ${color.red}
+content-foreground = ${color.blue}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -170,20 +170,20 @@ content-foreground = ${color.black}
 type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
-content-background = ${color.magenta}
-content-foreground = ${color.red}
+content-background = ${color.blue}
+content-foreground = ${color.blue}
 
 [module/MPL]
 type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
 content-background = ${color.blue}
-content-foreground = ${color.magenta}
+content-foreground = ${color.blue}
 
 [module/GMPL]
 type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
-content-background = ${color.magenta}
+content-background = ${color.blue}
 content-foreground = ${color.green}
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_

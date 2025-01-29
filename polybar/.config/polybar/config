@@ -47,15 +47,15 @@ module-margin-right = 0
 wm-restack = bspwm
 
 font-0 = "Operator Mono:size=11;3"
-font-1 = "Iosevka Nerd Font:size=12;3"
+font-1 = "Iosevka Nerd Font:size=12:style=Bold;3"
 font-2 = "Iosevka Nerd Font:size=16;4"
 font-3 = "Iosevka Nerd Font:size=18;4"
 font-4 = "Symbols Nerd Font Mono:style=Bold:size=13;3"
 
 # Default
-modules-left = spacing YLD launcher RD GPL bspwm GRD sep YLD network RD GPL GPL battery GPL GPL brightness GPL GPL volume GRD
-modules-center = 
-modules-right = GLD temperature GPL cpu GPL memory GPL BLD filesystem BRD sep GLD date GPL BLD time BRD spacing
+modules-left = spacing launcher bspwm sep network battery brightness volume
+modules-center = prev play symbol next
+modules-right = GLD temperature cpu memory BLD filesystem BRD sep GLD date BLD time BRD spacing
 
 spacing = 0
 dim-value = 1.0

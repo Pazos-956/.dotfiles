@@ -1,0 +1,12 @@
+bspwm/
+eww/
+kitty/
+networkmanager-dmenu/
+nvim/
+picom/
+polybar/
+rofi/
+scripts/
+session/
+sxhkd/
+zsh/
