@@ -1,6 +1,6 @@
 #!/bin/bash
 stow_folders="bspwm kitty networkmanager-dmenu
-nvim picom polybar rofi scripts session sxhkd zsh" #eww
+nvim picom polybar rofi scripts sxhkd zsh" #eww session
 
 for folder in $(echo $stow_folders)
 do
