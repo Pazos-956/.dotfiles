@@ -350,7 +350,7 @@ format-disconnected-prefix-font = 5
 format-disconnected-foreground = ${color.black}
 format-disconnected-background = ${color.blue}
 
-label-connected = "%{A1:def-nmdmenu &:}%ifname%%{A}"
+label-connected = "%{A1:def-nmdmenu &:}%essid%%{A}"
 label-disconnected = "%{A1:def-nmdmenu &:}Offline%{A}"
 
 label-connected-foreground = ${color.black}
