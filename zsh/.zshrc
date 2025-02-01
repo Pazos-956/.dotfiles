@@ -34,7 +34,7 @@ function rot13()
 
 cd_to_dir() {
     local selected
-    selected=$(find ~/Desktop ~/.config ~/Desktop/4Uni -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/Desktop ~/.dotfiles ~/.config ~/Desktop/4Uni -mindepth 1 -maxdepth 1 -type d | fzf)
     if [[ -n "$selected" ]]; then
         # Change to the selected directory
         cd "$selected" || return 1
