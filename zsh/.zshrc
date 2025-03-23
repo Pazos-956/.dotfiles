@@ -10,7 +10,9 @@ fi
 
 # Fix Java problem
 export _JAVA_AWT_WM_NONREPARENTING=1
-
+#
+# Fix Vagrant problem with plugins
+export VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT=1
 # Prompt
 PROMPT="%F{red}┌[%f%F{cyan}%m%f%F{red}]─[%f%F{yellow}%D{%H:%M-%d/%m}%f%F{red}]─[%f%F{magenta}%d%f%F{red}]%f"$'\n'"%F{red}└╼%f%F{green}$USER%f%F{yellow}$%f"
 # Export PATH$
@@ -34,7 +36,7 @@ function rot13()
 
 cd_to_dir() {
     local selected
-    selected=$(find ~/Desktop ~/.dotfiles ~/.config ~/Desktop/4Uni -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/Desktop ~/.config ~/Desktop/4Uni -mindepth 1 -maxdepth 1 -type d,l  | fzf)
     if [[ -n "$selected" ]]; then
         # Change to the selected directory
         cd "$selected" || return 1

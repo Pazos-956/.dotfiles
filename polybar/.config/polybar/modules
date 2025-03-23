@@ -36,6 +36,7 @@ label-foreground = ${color.font}
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
+ramp-3 = 
 ramp-font = 5
 ramp-foreground = ${color.blue}
 
@@ -391,7 +392,7 @@ click-left = playerctl --player=spotify,%any previous
 [module/play]
 type = custom/script
 interval = 0
-exec = $HOME/.config/polybar/title //script below
+exec = $HOME/.config/polybar/title.sh 
 format = <label>
 format-font = 2
 format-background = ${color.background}

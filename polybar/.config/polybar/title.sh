@@ -10,7 +10,7 @@ if [[ ${#title} -gt 35 ]]; then
     title=${title::35}"..."
 fi
 
-if [[ $(playerctl status) == 'Playing' ]];
+if [[ $(playerctl --player=spotify,%any status) == 'Playing' ]];
   then
     echo '  '$title
   else

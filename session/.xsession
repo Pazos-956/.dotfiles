@@ -41,13 +41,3 @@ else
   xrandr --output eDP --primary --mode 1920x1080 --rotate normal --output HDMI-A-0 --off &
 fi
 
-
-# Automount Devices
-udiskie -t &
-# Java Fonts
-xsettingsd &
-# Bar
-#/home/abel/.config/eww/bar/launch_bar
-# Fondo
-feh --bg-fill /home/abel/Pictures/fondos/piano_astronaut.png &
-
